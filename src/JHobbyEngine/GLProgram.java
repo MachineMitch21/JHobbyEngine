@@ -1,4 +1,4 @@
-package Engine;
+package JHobbyEngine;
 
 import java.nio.ByteBuffer;
 import java.util.Collection;
