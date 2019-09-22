@@ -1,10 +1,6 @@
 package Engine;
 
-import org.lwjgl.opengl.*;
-
-import java.nio.Buffer;
 import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
 
 import static org.lwjgl.opengl.GL33.*;
 
