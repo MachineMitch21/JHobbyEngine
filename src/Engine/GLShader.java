@@ -39,4 +39,12 @@ public class GLShader {
         }
         return true;
     }
+
+    public int getType() {
+        return this.type;
+    }
+
+    public int getId() {
+        return this.id;
+    }
 }
