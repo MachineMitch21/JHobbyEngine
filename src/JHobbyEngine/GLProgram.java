@@ -49,4 +49,34 @@ public class GLProgram {
     public static void unbind() {
         glUseProgram(0);
     }
+
+    public void setBoolean(String name, boolean val) {
+        int loc = glGetUniformLocation(this.id, name);
+        glUniform1i(loc, val);
+    }
+
+    public void setInteger(String name, int val) {
+        int loc = glGetUniformLocation(this.id, name);
+        glUniform1i(loc, val);
+    }
+
+    public void setFloat(String name, float val) {
+        int loc = glGetUniformLocation(this.id, name);
+        glUniform1f(loc, val);
+    }
+
+    public void setVector2(String name, float v1, float v2) {
+        int loc = glGetUniformLocation(this.id, name);
+        glUniform2f(loc, v1, v2);
+    }
+
+    public void setVector3(String name, float v1, float v2, float v3) {
+        int loc = glGetUniformLocation(this.id, name);
+        glUniform3f(loc, v1, v2, v3);
+    }
+
+    public void setVector4(String name, float v1, float v2, float v3, float v4) {
+        int loc = glGetUniformLocation(this.id, name);
+        glUniform4f(loc, v1, v2, v3, v4);
+    }
 }
