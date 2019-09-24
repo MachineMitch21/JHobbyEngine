@@ -1,6 +1,8 @@
 package JHobbyEngine;
 
 import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.IntBuffer;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -25,14 +27,14 @@ public class GLProgram {
         }
         glLinkProgram(this.id);
 
-        int[] result = {GL_FALSE};
-        int[] logLength = {0};
+        IntBuffer result = IntBuffer.allocate(1);
+        IntBuffer logLength = IntBuffer.allocate(1);
 
         glGetProgramiv(this.id, GL_LINK_STATUS, result);
         glGetProgramiv(this.id, GL_INFO_LOG_LENGTH, logLength);
 
-        if (result[0] == GL_FALSE) {
-            ByteBuffer err = ByteBuffer.allocate(logLength[0]);
+        if (result.get(0) == GL_FALSE) {
+            ByteBuffer err = ByteBuffer.allocateDirect(logLength.get(0));
             glGetProgramInfoLog(this.id, logLength, err);
             if (cb != null) {
                 cb.callback(err.toString());
@@ -52,7 +54,7 @@ public class GLProgram {
 
     public void setBoolean(String name, boolean val) {
         int loc = glGetUniformLocation(this.id, name);
-        glUniform1i(loc, val);
+        glUniform1i(this.id, (val ? 1 : 0));
     }
 
     public void setInteger(String name, int val) {

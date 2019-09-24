@@ -127,27 +127,29 @@ public class Main {
         // Set the clear color
         glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
 
-        GLShader vert = new GLShader(GL_VERTEX_SHADER);
-        GLShader frag = new GLShader(GL_FRAGMENT_SHADER);
-        System.out.println(System.getProperty("user.dir"));
-        try {
-            vert.create(FileUtilities.readFile("shaders/default.vert"), (String err) -> { System.out.println(err); });
-            frag.create(FileUtilities.readFile("shaders/default.frag"), (String err) -> { System.out.println(err); });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        GLProgram program = new GLProgram();
-        program.create(List.of(vert, frag), (String err) -> { System.out.println(err); });
-
-        vert.destroy();
-        frag.destroy();
+        // This shader code causes ACCESS_VIOLATION
+        // need to investigate this
+//        GLShader vert = new GLShader(GL_VERTEX_SHADER);
+//        GLShader frag = new GLShader(GL_FRAGMENT_SHADER);
+//        System.out.println(System.getProperty("user.dir"));
+//        try {
+//            vert.create(FileUtilities.readFile("shaders/default.vert"), (String err) -> { System.out.println(err); });
+//            frag.create(FileUtilities.readFile("shaders/default.frag"), (String err) -> { System.out.println(err); });
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        GLProgram program = new GLProgram();
+//        program.create(List.of(vert, frag), (String err) -> { System.out.println(err); });
+//
+//        vert.destroy();
+//        frag.destroy();
 
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while ( !glfwWindowShouldClose(window) ) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
-            program.bind();
+//            program.bind();
             glDrawArrays(GL_TRIANGLES, 0, 3);
             glfwSwapBuffers(window); // swap the color buffers
 
