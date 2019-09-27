@@ -1,5 +1,7 @@
 package JHobbyEngine;
 
+import org.lwjgl.system.MemoryStack;
+
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.IntBuffer;
@@ -20,26 +22,28 @@ public class GLProgram {
     }
 
     public boolean create(Collection<GLShader> shaders, StringCallback cb) {
-        this.id = glCreateProgram();
-        for (Iterator<GLShader> it = shaders.iterator(); it.hasNext(); ) {
-            GLShader shader = it.next();
-            glAttachShader(this.id, shader.getId());
-        }
-        glLinkProgram(this.id);
-
-        IntBuffer result = IntBuffer.allocate(1);
-        IntBuffer logLength = IntBuffer.allocate(1);
-
-        glGetProgramiv(this.id, GL_LINK_STATUS, result);
-        glGetProgramiv(this.id, GL_INFO_LOG_LENGTH, logLength);
-
-        if (result.get(0) == GL_FALSE) {
-            ByteBuffer err = ByteBuffer.allocateDirect(logLength.get(0));
-            glGetProgramInfoLog(this.id, logLength, err);
-            if (cb != null) {
-                cb.callback(err.toString());
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            this.id = glCreateProgram();
+            for (Iterator<GLShader> it = shaders.iterator(); it.hasNext(); ) {
+                GLShader shader = it.next();
+                glAttachShader(this.id, shader.getId());
             }
-            return false;
+            glLinkProgram(this.id);
+
+            IntBuffer result = stack.mallocInt(1);
+            IntBuffer logLength = stack.mallocInt(1);
+
+            glGetProgramiv(this.id, GL_LINK_STATUS, result);
+            glGetProgramiv(this.id, GL_INFO_LOG_LENGTH, logLength);
+
+            if (result.get(0) == GL_FALSE) {
+                ByteBuffer err = stack.malloc(logLength.get(0));
+                glGetProgramInfoLog(this.id, logLength, err);
+                if (cb != null) {
+                    cb.callback(err.toString());
+                }
+                return false;
+            }
         }
         return true;
     }

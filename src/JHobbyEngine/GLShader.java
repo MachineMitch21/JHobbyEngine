@@ -1,5 +1,7 @@
 package JHobbyEngine;
 
+import org.lwjgl.system.MemoryStack;
+
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
@@ -19,24 +21,26 @@ public class GLShader {
     }
 
     public boolean create(String src, StringCallback cb) {
-        IntBuffer result = IntBuffer.allocate(1);
-        IntBuffer logLength = IntBuffer.allocate(1);
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            IntBuffer result = stack.mallocInt(1);
+            IntBuffer logLength = stack.mallocInt(1);
 
-        glShaderSource(this.id, src);
-        glCompileShader(this.id);
+            glShaderSource(this.id, src);
+            glCompileShader(this.id);
 
-        glGetShaderiv(this.id, GL_COMPILE_STATUS, result);
-        glGetShaderiv(this.id, GL_INFO_LOG_LENGTH, logLength);
+            glGetShaderiv(this.id, GL_COMPILE_STATUS, result);
+            glGetShaderiv(this.id, GL_INFO_LOG_LENGTH, logLength);
 
-        if (result.get(0) == GL_FALSE) {
-            ByteBuffer err = ByteBuffer.allocateDirect(logLength.get(0));
-            glGetShaderInfoLog(this.id, logLength, err);
+            if (result.get(0) == GL_FALSE) {
+                ByteBuffer err = stack.malloc(logLength.get(0));
+                glGetShaderInfoLog(this.id, logLength, err);
 
-            if (cb != null) {
-                cb.callback(err.toString());
+                if (cb != null) {
+                    cb.callback(err.toString());
+                }
+                this.id = 0;
+                return false;
             }
-            this.id = 0;
-            return false;
         }
         return true;
     }

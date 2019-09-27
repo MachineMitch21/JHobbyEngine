@@ -12,7 +12,7 @@ public class FileUtilities {
 
         String line = "";
         while ((line = reader.readLine()) != null) {
-            data.concat(line);
+            data = data.concat(line.concat("\n"));
         }
 
         return data;
