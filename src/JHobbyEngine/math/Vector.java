@@ -36,11 +36,11 @@ public abstract class Vector<T extends Number> {
         return (Vector<T>) VectorFactory.instance().create(Integer.valueOf(this.capacity), newElements);
     }
 
-    public void set(int index, T val) {
+    protected void set(int index, T val) {
         this.elements.set(index, val);
     }
 
-    public T get(int index) {
+    protected T get(int index) {
         return this.elements.get(index);
     }
 
