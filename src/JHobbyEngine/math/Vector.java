@@ -14,7 +14,11 @@ public abstract class Vector<T extends Number> {
     protected Vector(int numElements, Collection<T> initialElements) {
         this.capacity = numElements;
         this.elements = new ArrayList<T>(numElements);
-        this.elements = (ArrayList<T>)List.copyOf(initialElements);
+        T[] arr = (T[])initialElements.toArray();
+        // Only copy elements up to capacity
+        for (int i = 0; i < this.capacity; i++) {
+            this.elements.set(i, arr[i]);
+        }
     }
 
     public Vector<T> add(Vector<T> other) {
