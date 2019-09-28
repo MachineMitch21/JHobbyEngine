@@ -1,6 +1,7 @@
 import JHobbyEngine.GLProgram;
 import JHobbyEngine.GLShader;
 import JHobbyEngine.io.FileUtilities;
+import JHobbyEngine.math.Vector;
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
