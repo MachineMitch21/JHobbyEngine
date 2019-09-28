@@ -133,6 +133,7 @@ public class Main {
             String vertSrc = FileUtilities.readFile("shaders/default.vert");
             String fragSrc = FileUtilities.readFile("shaders/default.frag");
             System.out.println(vertSrc);
+            System.out.println(fragSrc);
             vert.create(vertSrc, (String err) -> { System.out.println(err); });
             frag.create(fragSrc, (String err) -> { System.out.println(err); });
         } catch (IOException e) {
