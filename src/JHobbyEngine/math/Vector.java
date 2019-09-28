@@ -36,6 +36,23 @@ public abstract class Vector<T extends Number> {
         return (Vector<T>) VectorFactory.instance().create(Integer.valueOf(this.capacity), newElements);
     }
 
+    public float magnitude() {
+        float mag = 0.0f;
+        for (int i = 0; i < this.elements.size(); i++) {
+            mag += (float) (Math.pow(this.elements.get(i).doubleValue(), 2));
+        }
+        return (float) Math.sqrt(mag);
+    }
+
+    public Vector<T> normalize() {
+        float m = this.magnitude();
+        ArrayList<T> newElements = new ArrayList<>(this.elements.size());
+        for (int i = 0; i < this.elements.size(); i++) {
+            newElements.set(i, (T) Float.valueOf(this.elements.get(i).floatValue() / m));
+        }
+        return (Vector<T>) VectorFactory.instance().create(Integer.valueOf(this.capacity), newElements);
+    }
+
     protected void set(int index, T val) {
         this.elements.set(index, val);
     }
