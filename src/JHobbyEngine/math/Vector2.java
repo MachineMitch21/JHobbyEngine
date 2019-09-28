@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Vector2<T extends Number> extends Vector<T> {
     public Vector2() {
-        super(2, (Collection<T>) List.of(0, 0));
+        super(2, (Collection<T>) List.of(0, 0), Vector2.class);
     }
 
     public Vector2(Collection<T> initialElements) {
-        super(2, initialElements);
+        super(2, initialElements, Vector2.class);
     }
 
-    protected Vector2(int numElements, Collection<T> initialElements) {
-        super(numElements, initialElements);
+    protected Vector2(int numElements, Collection<T> initialElements, Class<? extends Vector> classType) {
+        super(numElements, initialElements, classType);
     }
 
     public void setX(T val) {
