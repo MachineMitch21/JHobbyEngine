@@ -3,11 +3,8 @@ package JHobbyEngine.math;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 
-import static java.util.List.copyOf;
-
-public class Vector<T extends Number> {
+public abstract class Vector<T extends Number> {
     private ArrayList<T> elements;
     private final int capacity;
 
