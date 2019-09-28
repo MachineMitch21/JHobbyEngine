@@ -17,4 +17,8 @@ public class FileUtilities {
 
         return data;
     }
+
+    public static String readFile(String file) throws IOException {
+        return readFile(file, true);
+    }
 }
