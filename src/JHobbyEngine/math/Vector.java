@@ -21,16 +21,16 @@ public abstract class Vector<T extends Number> {
     }
 
     public Vector<T> add(Vector<T> other) {
-        ArrayList<T> newElements = new ArrayList<>(this.elements.size());
-        for (int i = 0; i < this.elements.size(); i++) {
+        ArrayList<T> newElements = new ArrayList<>(this.capacity);
+        for (int i = 0; i < this.capacity; i++) {
             newElements.set(i, NumberUtilities.add(this.elements.get(i), other.elements.get(i)));
         }
         return (Vector<T>) VectorFactory.instance().create(Integer.valueOf(this.capacity), newElements);
     }
 
     public Vector<T> subtract(Vector<T> other) {
-        ArrayList<T> newElements = new ArrayList<>(this.elements.size());
-        for (int i = 0; i < this.elements.size(); i++) {
+        ArrayList<T> newElements = new ArrayList<>(this.capacity);
+        for (int i = 0; i < this.capacity; i++) {
             newElements.set(i, NumberUtilities.subtract(this.elements.get(i), other.elements.get(i)));
         }
         return (Vector<T>) VectorFactory.instance().create(Integer.valueOf(this.capacity), newElements);
@@ -38,7 +38,7 @@ public abstract class Vector<T extends Number> {
 
     public float magnitude() {
         float mag = 0.0f;
-        for (int i = 0; i < this.elements.size(); i++) {
+        for (int i = 0; i < this.capacity; i++) {
             mag += (float) (Math.pow(this.elements.get(i).doubleValue(), 2));
         }
         return (float) Math.sqrt(mag);
@@ -46,9 +46,17 @@ public abstract class Vector<T extends Number> {
 
     public Vector<T> normalize() {
         float m = this.magnitude();
-        ArrayList<T> newElements = new ArrayList<>(this.elements.size());
-        for (int i = 0; i < this.elements.size(); i++) {
+        ArrayList<T> newElements = new ArrayList<>(this.capacity);
+        for (int i = 0; i < this.capacity; i++) {
             newElements.set(i, (T) Float.valueOf(this.elements.get(i).floatValue() / m));
+        }
+        return (Vector<T>) VectorFactory.instance().create(Integer.valueOf(this.capacity), newElements);
+    }
+    
+    public Vector<T> scale(T scalar) {
+        ArrayList<T> newElements = new ArrayList<>(this.capacity);
+        for (int i = 0; i < this.capacity; i++) {
+            newElements.set(i, NumberUtilities.multiply(this.elements.get(i), scalar));
         }
         return (Vector<T>) VectorFactory.instance().create(Integer.valueOf(this.capacity), newElements);
     }
