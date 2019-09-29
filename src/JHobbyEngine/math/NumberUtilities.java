@@ -18,4 +18,8 @@ public class NumberUtilities {
     public static <T extends Number> T divide(T n1, T n2) {
         return (T) new BigDecimal(n1.toString()).divide(new BigDecimal(n2.toString()));
     }
+
+    public static <T extends Number> T pow(T n, int pow) {
+        return (T) new BigDecimal(n.toString()).pow(pow);
+    }
 }

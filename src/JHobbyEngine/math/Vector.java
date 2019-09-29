@@ -61,6 +61,16 @@ public abstract class Vector<T extends Number> {
         return (Vector<T>) VectorFactory.instance().create(Integer.valueOf(this.capacity), newElements);
     }
 
+    public T dot(Vector<T> other) {
+        Vector<T> v1Normalized = this.normalize();
+        Vector<T> otherNormalized = other.normalize();
+        T dot = (T) Integer.valueOf(0);
+        for (int i = 0; i < this.capacity; i++) {
+            dot = NumberUtilities.add(dot, NumberUtilities.multiply(v1Normalized.get(i), otherNormalized.get(i)));
+        }
+        return dot;
+    }
+
     protected void set(int index, T val) {
         this.elements.set(index, val);
     }
