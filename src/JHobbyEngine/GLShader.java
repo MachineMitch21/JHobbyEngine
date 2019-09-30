@@ -13,7 +13,17 @@ public class GLShader {
 
     public GLShader(int type) {
         this.type = type;
-        this.id = 0;
+        this.id = glCreateShader(type);
+    }
+    
+    public GLShader(int type, String file) {
+    	this.type = type;
+    	this.id = glCreateShader(type);
+    	try {
+	    	this.create(FileUtilities.readFile(file), (String err) -> { System.out.println(err); });	
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
     }
 
     public void destroy() {
@@ -24,6 +34,8 @@ public class GLShader {
         try (MemoryStack stack = MemoryStack.stackPush()) {
             IntBuffer result = stack.mallocInt(1);
             IntBuffer logLength = stack.mallocInt(1);
+            
+            glCreateShader
 
             glShaderSource(this.id, src);
             glCompileShader(this.id);
@@ -51,5 +63,9 @@ public class GLShader {
 
     public int getId() {
         return this.id;
+    }
+    
+    public boolean hasValidId() {
+    	
     }
 }
