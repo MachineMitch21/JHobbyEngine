@@ -1,6 +1,8 @@
 package JHobbyEngine;
 
+import JHobbyEngine.io.FileUtilities;
 import org.lwjgl.system.MemoryStack;
+import java.io.IOException;
 
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
@@ -20,7 +22,7 @@ public class GLShader {
     	this.type = type;
     	this.id = glCreateShader(type);
     	try {
-	    	this.create(FileUtilities.readFile(file), (String err) -> { System.out.println(err); });	
+	    	this.create(FileUtilities.readFile(file), (String err) -> { System.out.println(err); });
     	} catch (IOException e) {
     		e.printStackTrace();
     	}
@@ -34,8 +36,6 @@ public class GLShader {
         try (MemoryStack stack = MemoryStack.stackPush()) {
             IntBuffer result = stack.mallocInt(1);
             IntBuffer logLength = stack.mallocInt(1);
-            
-            glCreateShader
 
             glShaderSource(this.id, src);
             glCompileShader(this.id);
@@ -63,9 +63,5 @@ public class GLShader {
 
     public int getId() {
         return this.id;
-    }
-    
-    public boolean hasValidId() {
-    	
     }
 }
