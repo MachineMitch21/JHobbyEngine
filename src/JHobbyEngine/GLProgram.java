@@ -1,5 +1,8 @@
 package JHobbyEngine;
 
+import JHobbyEngine.math.Vector2;
+import JHobbyEngine.math.Vector3;
+import JHobbyEngine.math.Vector4;
 import org.lwjgl.system.MemoryStack;
 
 import java.nio.ByteBuffer;
@@ -66,23 +69,35 @@ public class GLProgram {
         glUniform1i(loc, val);
     }
 
-    public void setFloat(String name, float val) {
+    public void setFloat(String name, Float val) {
         int loc = glGetUniformLocation(this.id, name);
         glUniform1f(loc, val);
     }
 
-    public void setVector2(String name, float v1, float v2) {
+    public void setVector2(String name, Float v1, Float v2) {
         int loc = glGetUniformLocation(this.id, name);
         glUniform2f(loc, v1, v2);
     }
 
-    public void setVector3(String name, float v1, float v2, float v3) {
+    public void setVector3(String name, Float v1, Float v2, Float v3) {
         int loc = glGetUniformLocation(this.id, name);
         glUniform3f(loc, v1, v2, v3);
     }
 
-    public void setVector4(String name, float v1, float v2, float v3, float v4) {
+    public void setVector4(String name, Float v1, Float v2, Float v3, Float v4) {
         int loc = glGetUniformLocation(this.id, name);
         glUniform4f(loc, v1, v2, v3, v4);
+    }
+
+    public void setVector2(String name, Vector2<Float> v) {
+        this.setVector2(name, v.getX(), v.getY());
+    }
+
+    public void setVector3(String name, Vector3<Float> v) {
+        this.setVector3(name, v.getX(), v.getY(), v.getZ());
+    }
+
+    public void setVector4(String name, Vector4<Float> v) {
+        this.setVector4(name, v.getX(), v.getY(), v.getZ(), v.getW());
     }
 }
