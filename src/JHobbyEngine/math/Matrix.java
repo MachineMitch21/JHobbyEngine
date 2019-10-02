@@ -14,6 +14,8 @@ public abstract class Matrix<T extends Number> {
         this.rows = rows;
         this.cols = columns;
         this.elements = elements;
+
+        MatrixFactory.instance().registerClass(new String(this.rows) + new String(this.columns), Matrix4f.class);
     }
 
    public Matrix<T> add(Matrix<T> other) {
@@ -23,6 +25,6 @@ public abstract class Matrix<T extends Number> {
                newElements[i][j] = NumberUtilities.add(this.elements[i][j], other.elements[i][j]);
            }
        }
-       
+
    }
 }
