@@ -16,12 +16,13 @@ public abstract class Matrix<T extends Number> {
         this.elements = elements;
     }
 
-//    public Matrix<T> add(Matrix<T> other) {
-//        T[][] newElements = (T[][]) Array.newInstance(this.elementType, this.rows, this.cols);
-//        for (int i = 0; i < this.rows; i++) {
-//            for (int j = 0; j < this.cols; j++) {
-//                newElements[i][j] = NumberUtilities.add(this.elements[i][j], other.elements[i][j]);
-//            }
-//        }
-//    }
+   public Matrix<T> add(Matrix<T> other) {
+       T[][] newElements = (T[][]) Array.newInstance(this.elementType, this.rows, this.cols);
+       for (int i = 0; i < this.rows; i++) {
+           for (int j = 0; j < this.cols; j++) {
+               newElements[i][j] = NumberUtilities.add(this.elements[i][j], other.elements[i][j]);
+           }
+       }
+       
+   }
 }
