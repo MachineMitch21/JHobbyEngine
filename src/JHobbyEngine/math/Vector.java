@@ -17,7 +17,7 @@ public abstract class Vector<T extends Number> {
             this.elements.set(i, arr[i]);
         }
 
-        VectorFactory.instance().registerVector(numElements, classType);
+        VectorFactory.instance().registerClass(numElements, classType);
     }
 
     public Vector<T> add(Vector<T> other) {
