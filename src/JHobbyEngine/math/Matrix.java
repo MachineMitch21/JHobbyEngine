@@ -33,4 +33,24 @@ public abstract class Matrix<T extends Number> {
        }
        return (Matrix<T>) MatrixFactory.instance().create(this.getFactoryKey(), newElements);
     }
+
+    public Matrix<T> subtract(Matrix<T> other) {
+        T[][] newElements = (T[][]) Array.newInstance(this.elementType, this.rows, this.cols);
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
+                newElements[i][j] = NumberUtilities.subtract(this.elements[i][j], other.elements[i][j]);
+            }
+        }
+        return (Matrix<T>) MatrixFactory.instance().create(this.getFactoryKey(), newElements);
+    }
+
+    public Matrix<T> scale(T scalar) {
+        T[][] newElements = (T[][]) Array.newInstance(this.elementType, this.rows, this.cols);
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.cols; j++) {
+                newElements[i][j] = NumberUtilities.multiply(this.elements[i][j], scalar);
+            }
+        }
+        return (Matrix<T>) MatrixFactory.instance().create(this.getFactoryKey(), newElements);
+    }
 }
