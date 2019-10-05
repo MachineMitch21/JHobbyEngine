@@ -79,6 +79,8 @@ public abstract class Vector<T extends Number> {
         return this.elements.get(index);
     }
 
+    public int getCapacity() { return this.capacity; }
+
     public Iterator<T> getIterator() {
         return this.elements.iterator();
     }
