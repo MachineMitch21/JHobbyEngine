@@ -1,5 +1,5 @@
-import JHobbyEngine.GLProgram;
-import JHobbyEngine.GLShader;
+import JHobbyEngine.gl.GLProgram;
+import JHobbyEngine.gl.GLShader;
 import JHobbyEngine.io.FileUtilities;
 import org.lwjgl.*;
 import org.lwjgl.glfw.*;

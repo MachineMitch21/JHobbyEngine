@@ -1,12 +1,12 @@
-package JHobbyEngine;
+package JHobbyEngine.gl;
 
+import JHobbyEngine.StringCallback;
 import JHobbyEngine.math.Vector2;
 import JHobbyEngine.math.Vector3;
 import JHobbyEngine.math.Vector4;
 import org.lwjgl.system.MemoryStack;
 
 import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
 import java.nio.IntBuffer;
 import java.util.Collection;
 import java.util.Iterator;

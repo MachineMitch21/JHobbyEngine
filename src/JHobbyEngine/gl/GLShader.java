@@ -1,5 +1,6 @@
-package JHobbyEngine;
+package JHobbyEngine.gl;
 
+import JHobbyEngine.StringCallback;
 import JHobbyEngine.io.FileUtilities;
 import org.lwjgl.system.MemoryStack;
 import java.io.IOException;
