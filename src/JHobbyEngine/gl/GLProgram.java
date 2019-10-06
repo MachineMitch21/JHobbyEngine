@@ -1,9 +1,9 @@
 package JHobbyEngine.gl;
 
 import JHobbyEngine.StringCallback;
-import JHobbyEngine.math.Vector2;
-import JHobbyEngine.math.Vector3;
-import JHobbyEngine.math.Vector4;
+import JHobbyEngine.math.Vector2f;
+import JHobbyEngine.math.Vector3f;
+import JHobbyEngine.math.Vector4f;
 import org.lwjgl.system.MemoryStack;
 
 import java.nio.ByteBuffer;
@@ -89,15 +89,15 @@ public class GLProgram {
         glUniform4f(loc, v1, v2, v3, v4);
     }
 
-    public void setVector2(String name, Vector2<Float> v) {
+    public void setVector2(String name, Vector2f v) {
         this.setVector2(name, v.getX(), v.getY());
     }
 
-    public void setVector3(String name, Vector3<Float> v) {
+    public void setVector3(String name, Vector3f v) {
         this.setVector3(name, v.getX(), v.getY(), v.getZ());
     }
 
-    public void setVector4(String name, Vector4<Float> v) {
+    public void setVector4(String name, Vector4f v) {
         this.setVector4(name, v.getX(), v.getY(), v.getZ(), v.getW());
     }
 }

@@ -1,7 +1,8 @@
 import JHobbyEngine.gl.GLProgram;
 import JHobbyEngine.gl.GLShader;
 import JHobbyEngine.io.FileUtilities;
-import org.lwjgl.*;
+import JHobbyEngine.math.Vector2f;
+import JHobbyEngine.math.Vectorf;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
 import org.lwjgl.system.*;
@@ -22,8 +23,9 @@ public class Main {
     private long window;
 
     public void run() {
-        System.out.println("Hello LWJGL " + Version.getVersion() + "!");
-
+        Vector2f v1 = new Vector2f(2.3f, 4.5f);
+        Vector2f v2 = new Vector2f(1.2f, 4.5f);
+        Vector2f sum = (Vector2f) Vector2f.add(v1, v2);
         init();
         loop();
 
