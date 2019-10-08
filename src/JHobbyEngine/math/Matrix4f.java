@@ -3,6 +3,14 @@ package JHobbyEngine.math;
 public class Matrix4f {
 	private float[] elements;
 
+	public Matrix4f(float diag) {
+		this.elements = new float[16];
+		this.elements[0] = diag;
+		this.elements[4] = diag;
+		this.elements[8] = diag;
+		this.elements[12] = diag;
+	}
+
 	protected Matrix4f(float[] elements) {
 		if (elements.length != this.elements.length) {
 			System.exit(-1);
@@ -33,6 +41,14 @@ public class Matrix4f {
 		this.elements[15] = r3c3;
 	}
 
+	public void set(int row, int col, float val) {
+		this.elements[row * 4 + col] = val;
+	}
+
+	public float get(int row, int col) {
+		return this.elements[row * 4 + col];
+	}
+
 	public static Matrix4f add(Matrix4f l, Matrix4f r) {
 		float[] newElements = new float[16];
 		for (int i = 0; i < l.elements.length; i++) {
@@ -47,5 +63,27 @@ public class Matrix4f {
 			newElements[i] = l.elements[i] - r.elements[i];
 		}
 		return new Matrix4f(newElements);
+	}
+
+	public static Matrix4f scale(Matrix4f mat, float scalar) {
+		float[] newElements = new float[16];
+		for (int i = 0; i < mat.elements.length; i++) {
+			newElements[i] = mat.elements[i] * scalar;
+		}
+		return new Matrix4f(newElements);
+	}
+
+	public static Matrix4f matrix(Matrix4f l, Matrix4f r) {
+		Matrix4f result = new Matrix4f(1.0f);
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				float sum = 0.0f;
+				for (int k = 0; k < 4; k++) {
+					sum += l.get(i, k) * r.get(k, j);
+				}
+				result.set(i, j, sum);
+			}
+		}
+		return result;
 	}
 }
