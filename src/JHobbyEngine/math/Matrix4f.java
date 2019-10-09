@@ -73,7 +73,7 @@ public class Matrix4f {
 		return new Matrix4f(newElements);
 	}
 
-	public static Matrix4f matrix(Matrix4f l, Matrix4f r) {
+	public static Matrix4f multiply(Matrix4f l, Matrix4f r) {
 		Matrix4f result = new Matrix4f(1.0f);
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
