@@ -59,4 +59,8 @@ public class Vector2f {
     public String toString() {
         return String.format("{ %f, %f }", this.x, this.y);
     }
+
+    public boolean equals(Vector2f other) {
+        return (this.x == other.x && this.y == other.y);
+    }
 }

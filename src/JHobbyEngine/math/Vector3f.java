@@ -70,4 +70,8 @@ public class Vector3f {
     public String toString() {
         return String.format("{ %f, %f, %f }", this.x, this.y, this.z);
     }
+
+    public boolean equals(Vector3f other) {
+        return (this.x == other.x && this.y == other.y && this.z == other.z);
+    }
 }

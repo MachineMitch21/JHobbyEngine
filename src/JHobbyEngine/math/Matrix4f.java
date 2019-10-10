@@ -1,5 +1,7 @@
 package JHobbyEngine.math;
 
+import java.util.Arrays;
+
 public class Matrix4f {
 	private float[] elements;
 
@@ -85,5 +87,9 @@ public class Matrix4f {
 			}
 		}
 		return result;
+	}
+
+	public boolean equals(Matrix4f other) {
+		return Arrays.equals(this.elements, other.elements);
 	}
 }

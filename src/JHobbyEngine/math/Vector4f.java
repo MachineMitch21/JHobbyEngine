@@ -81,4 +81,8 @@ public class Vector4f {
     public String toString() {
         return String.format("{ %f, %f, %f, %f }", this.x, this.y, this.z, this.w);
     }
+
+    public boolean equals(Vector4f other) {
+        return (this.x == other.x && this.y == other.y && this.z == other.z && this.w == other.w);
+    }
 }
