@@ -15,4 +15,14 @@ class Matrix4fTest {
     Matrix4f result = Matrix4f.add(first, second);
     assertEquals(result.equals(expected), true);
   }
+
+  @Test
+  public void testSubtract() {
+    Matrix4f first = new Matrix4f(3.4f);
+    Matrix4f second = new Matrix4f(1.2f);
+
+    Matrix4f expected = new Matrix4f(2.2f);
+    Matrix4f result = Matrix4f.subtract(first, second);
+    assertEquals(result.equals(expected), true);
+  }
 }
