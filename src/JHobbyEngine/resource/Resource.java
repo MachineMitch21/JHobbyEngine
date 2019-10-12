@@ -1,14 +1,10 @@
 package JHobbyEngine.resource;
 
-public abstract class Resource<T> {
+public abstract class Resource {
 
-    protected Resource(Class<T> classType) {
+    private String fileName = "";
 
-    }
-
-    String fileName = "";
-
-    public void setFileName(String fileName) {
+    public Resource(String fileName) {
         this.fileName = fileName;
     }
 
