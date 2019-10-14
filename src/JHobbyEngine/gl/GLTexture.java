@@ -58,5 +58,24 @@ public class GLTexture {
         glActiveTexture(GL_TEXTURE0 + unit);
     }
 
+    public void setWrap(int param) {
+        glBindTexture(GL_TEXTURE_2D, this.id);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, param);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, param);
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+    public void setMinFilter(int param) {
+        glBindTexture(GL_TEXTURE_2D, this.id);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, param);
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+    public void setMagFilter(int param) {
+        glBindTexture(GL_TEXTURE_2D, this.id);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, param);
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
     public int getId() { return this.id; }
 }
