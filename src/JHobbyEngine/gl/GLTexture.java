@@ -53,5 +53,10 @@ public class GLTexture {
         glDeleteTextures(this.id);
     }
 
+    public void bind(int unit) {
+        glBindTexture(GL_TEXTURE_2D, this.id);
+        glActiveTexture(GL_TEXTURE0 + unit);
+    }
+
     public int getId() { return this.id; }
 }

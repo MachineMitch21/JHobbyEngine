@@ -1,7 +1,7 @@
 import JHobbyEngine.gl.GLProgram;
 import JHobbyEngine.gl.GLShader;
+import JHobbyEngine.gl.GLTexture;
 import JHobbyEngine.io.FileUtilities;
-import JHobbyEngine.math.Vector2f;
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.*;
 import org.lwjgl.system.*;
@@ -120,10 +120,10 @@ public class Main {
         glBufferData(GL_ARRAY_BUFFER, vertices, GL_STATIC_DRAW);
 
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, false, 5 * (Float.SIZE / 8), 0);
 
         glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 2, GL_FLOAT, false, 5, 3);
+        glVertexAttribPointer(1, 2, GL_FLOAT, false, 5 * (Float.SIZE / 8), 3 * (Float.SIZE / 8));
 
         // Set the clear color
         glClearColor(0.15f, 0.15f, 0.15f, 0.0f);
@@ -145,11 +145,22 @@ public class Main {
         vert.destroy();
         frag.destroy();
 
+        program.setInteger("tex", 0);
+
+        GLTexture texture = new GLTexture();
+        try {
+            texture.create(FileUtilities.readImageFile("assets/brick.jpg"), true, (String err) -> { System.out.println("Error with texture"); });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while ( !glfwWindowShouldClose(window) ) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
             program.bind();
+            texture.bind(0);
+
             glDrawArrays(GL_TRIANGLES, 0, 3);
             glfwSwapBuffers(window); // swap the color buffers
 
