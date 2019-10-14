@@ -108,9 +108,9 @@ public class Main {
         });
 
         float[] vertices = {
-                -0.5f, -0.5f, 0.0f,
-                0.0f, 0.5f, 0.0f,
-                0.5f, -0.5f, 0.0f
+                -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+                0.0f, 0.5f, 0.0f, 0.5f, 1.0f,
+                0.5f, -0.5f, 0.0f, 1.0f, 0.0f
         };
 
         int vao = glGenVertexArrays();
@@ -121,6 +121,9 @@ public class Main {
 
         glEnableVertexAttribArray(0);
         glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
+
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 2, GL_FLOAT, false, 5, 3);
 
         // Set the clear color
         glClearColor(0.15f, 0.15f, 0.15f, 0.0f);

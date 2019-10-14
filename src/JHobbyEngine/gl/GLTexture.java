@@ -42,11 +42,16 @@ public class GLTexture {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, image.getWidth(), image.getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+
+        final int colorFormat = (BYTES_PER_PIXEL == 4 ? GL_RGBA : GL_RGB);
+
+        glTexImage2D(GL_TEXTURE_2D, 0, colorFormat, image.getWidth(), image.getHeight(), 0, colorFormat, GL_UNSIGNED_BYTE, buffer);
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 
     public void destroy() {
         glDeleteTextures(this.id);
     }
+
+    public int getId() { return this.id; }
 }
