@@ -7,6 +7,31 @@ import static org.junit.jupiter.api.Assertions.*;
 class Matrix4fTest {
 
   @Test
+  public void testEquals() {
+    Matrix4f first = new Matrix4f(
+            2.3f, 2.1f, 1.0f, 1.0f,
+            5.4f, 3.2f, 1.2f, 5.4f,
+            6.5f, 7.4f, 1.2f, 4.3f,
+            1.0f, 1.0f, 34.5f, 12.25f
+    );
+
+    Matrix4f second = new Matrix4f(
+            new float[] {
+                    2.3f, 2.1f, 1.0f, 1.0f,
+                    5.4f, 3.2f, 1.2f, 5.4f,
+                    6.5f, 7.4f, 1.2f, 4.3f,
+                    1.0f, 1.0f, 34.5f, 12.25f
+            }
+    );
+
+    assertEquals(first.equals(second), true);
+
+    Matrix4f identity = new Matrix4f(1.0f);
+    
+    assertEquals(first.equals(identity), false);
+  }
+
+  @Test
   public void testAdd() {
     Matrix4f first = new Matrix4f(1.0f);
     Matrix4f second = new Matrix4f(1.0f);
