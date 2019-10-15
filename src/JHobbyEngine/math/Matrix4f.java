@@ -13,7 +13,7 @@ public class Matrix4f {
 		this.elements[12] = diag;
 	}
 
-	protected Matrix4f(float[] elements) {
+	public Matrix4f(float[] elements) {
 		if (elements.length != this.elements.length) {
 			System.exit(-1);
 		}

@@ -1,5 +1,6 @@
-package JHobbyEngine.math;
+package test;
 
+import JHobbyEngine.math.Matrix4f;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,7 +28,7 @@ class Matrix4fTest {
     assertEquals(first.equals(second), true);
 
     Matrix4f identity = new Matrix4f(1.0f);
-    
+
     assertEquals(first.equals(identity), false);
   }
 
