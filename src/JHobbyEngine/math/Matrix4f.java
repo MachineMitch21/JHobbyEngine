@@ -14,7 +14,7 @@ public class Matrix4f {
 	}
 
 	public Matrix4f(float[] elements) {
-		if (elements.length != this.elements.length) {
+		if (elements.length != 16) {
 			System.exit(-1);
 		}
 		this.elements = elements;

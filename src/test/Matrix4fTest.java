@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Matrix4fTest {
+public class Matrix4fTest {
 
   @Test
   public void testEquals() {
