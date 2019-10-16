@@ -89,6 +89,23 @@ public class Matrix4f {
 		return result;
 	}
 
+	public static Vector4f multiply(Matrix4f l, Vector4f r) {
+		Vector4f result = new Vector4f();
+		for (int i = 0; i < 4; i++) {
+			float sum = 0.f;
+			for (int j = 0; j < 4; j++) {
+				sum += l.get(i, j) * r.get(j);
+			}
+			result.set(i, sum);
+		}
+		return result;
+	}
+
+	public static Vector3f multiply(Matrix4f l, Vector3f r) {
+		Vector4f result = Matrix4f.multiply(l, new Vector4f(r.getX(), r.getY(), r.getZ(), 1.f));
+		return new Vector3f(result.getX(), result.getY(), result.getZ());
+	}
+
 	public boolean equals(Matrix4f other) {
 		return Arrays.equals(this.elements, other.elements);
 	}
