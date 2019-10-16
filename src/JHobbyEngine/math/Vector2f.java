@@ -5,6 +5,21 @@ public class Vector2f {
     private float x;
     private float y;
 
+    public void set(int index, float val) {
+        switch (index) {
+            case 0: this.x = val;
+            case 1: this.y = val;
+        }
+    }
+
+    public float get(int index) {
+        switch (index) {
+            case 0: return this.x;
+            case 1: return this.y;
+            default: return 0;
+        }
+    }
+
     public void setX(float x) {
         this.x = x;
     }

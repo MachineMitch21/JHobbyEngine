@@ -6,6 +6,23 @@ public class Vector3f {
     private float y;
     private float z;
 
+    public void set(int index, float val) {
+        switch (index) {
+            case 0: this.x = val;
+            case 1: this.y = val;
+            case 2: this.z = val;
+        }
+    }
+
+    public float get(int index) {
+        switch (index) {
+            case 0: return this.x;
+            case 1: return this.y;
+            case 2: return this.z;
+            default: return 0;
+        }
+    }
+
     public void setX(float x) {
         this.x = x;
     }
