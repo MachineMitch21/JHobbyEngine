@@ -7,6 +7,13 @@ public class Vector4f {
     private float z;
     private float w;
 
+    public Vector4f() {
+        this.x = 0.f;
+        this.y = 0.f;
+        this.z = 0.f;
+        this.w = 0.f;
+    }
+
     public Vector4f(float x, float y, float z, float w) {
         this.x = x;
         this.y = y;

@@ -47,6 +47,12 @@ public class Vector3f {
         return z;
     }
 
+    public Vector3f() {
+        this.x = 0.f;
+        this.y = 0.f;
+        this.z = 0.f;
+    }
+
     public Vector3f(float x, float y, float z) {
         this.x = x;
         this.y = y;

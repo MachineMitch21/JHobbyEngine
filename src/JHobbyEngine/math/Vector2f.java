@@ -36,6 +36,11 @@ public class Vector2f {
         return y;
     }
 
+    public Vector2f() {
+        this.x = 0.f;
+        this.y = 0.f;
+    }
+
     public Vector2f(float x, float y) {
         this.x = x;
         this.y = y;
