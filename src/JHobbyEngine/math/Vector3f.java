@@ -65,6 +65,10 @@ public class Vector3f {
         this.z = copy.z;
     }
 
+    public static float dist(Vector3f l, Vector3f r) {
+        return Vector3f.magnitude(Vector3f.subtract(l, r));
+    }
+
     public static Vector3f add(Vector3f l, Vector3f r) {
         return new Vector3f(l.x + r.x, l.y + r.y, l.z + r.z);
     }

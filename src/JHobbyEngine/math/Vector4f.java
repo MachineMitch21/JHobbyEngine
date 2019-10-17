@@ -79,6 +79,10 @@ public class Vector4f {
         return w;
     }
 
+    public static float dist(Vector4f l, Vector4f r) {
+        return Vector4f.magnitude(Vector4f.subtract(l, r));
+    }
+
     public static Vector4f add(Vector4f l, Vector4f r) {
         return new Vector4f(l.x + r.x, l.y + r.y, l.z + r.z, l.w + r.w);
     }

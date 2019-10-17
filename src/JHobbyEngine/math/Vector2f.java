@@ -51,6 +51,10 @@ public class Vector2f {
         this.y = copy.y;
     }
 
+    public static float dist(Vector2f l, Vector2f r) {
+        return Vector2f.magnitude(Vector2f.subtract(l, r));
+    }
+
     public static Vector2f add(Vector2f l, Vector2f r) {
         return new Vector2f(l.x + r.x, l.y + r.y);
     }
