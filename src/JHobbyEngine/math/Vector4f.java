@@ -105,7 +105,7 @@ public class Vector4f {
     }
 
     public static float dot(Vector4f l, Vector4f r) {
-        return (float) l.x * r.x + l.y * r.y + l.z * r.z + l.w * r.w;
+        return l.x * r.x + l.y * r.y + l.z * r.z + l.w * r.w;
     }
 
     public String toString() {

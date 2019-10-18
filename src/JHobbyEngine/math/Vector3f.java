@@ -91,7 +91,7 @@ public class Vector3f {
     }
 
     public static float dot(Vector3f l, Vector3f r) {
-        return (float) l.x * r.x + l.y * r.y + l.z * r.z;
+        return l.x * r.x + l.y * r.y + l.z * r.z;
     }
 
     public String toString() {

@@ -77,7 +77,7 @@ public class Vector2f {
     }
 
     public static float dot(Vector2f l, Vector2f r) {
-        return (float) l.x * r.x + l.y * r.y;
+        return l.x * r.x + l.y * r.y;
     }
 
     public String toString() {
