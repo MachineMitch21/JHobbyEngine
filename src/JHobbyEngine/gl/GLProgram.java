@@ -100,4 +100,9 @@ public class GLProgram {
     public void setVector4(String name, Vector4f v) {
         this.setVector4(name, v.getX(), v.getY(), v.getZ(), v.getW());
     }
+    
+    public void setMatrix4(String name, Matrix4f m) {
+    	int loc = glGetUniformLocation(this.id, name);
+    	// TODO: Actually send the data to opengl
+    }
 }
